@@ -29,3 +29,14 @@ spec:
       targetPort: 8080
   selector:
     app: customer-order-service
+
+    spring:
+      data:
+        mongodb:
+          uri: mongodb://spring:cap2020@mongodb:27017/demo
+
+
+    logging:
+      level:
+        org.springframework.data.mongodb: DEBUG
+        org.mongodb.driver: DEBUG

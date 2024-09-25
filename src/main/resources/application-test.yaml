@@ -1,0 +1,33 @@
+# src/test/resources/application-test.yaml
+
+# Configuración de base de datos H2 para pruebas
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb  # Base de datos en memoria H2
+    driverClassName: org.h2.Driver
+    username: sa  # Usuario predeterminado de H2
+    password:
+    platform: h2
+
+  jpa:
+    hibernate:
+      ddl-auto: update  # Actualiza el esquema de la base de datos en cada prueba
+    database-platform: org.hibernate.dialect.H2Dialect  # Dialecto de H2 para JPA
+
+  h2:
+    console:
+      enabled: true  # Habilita la consola web de H2 (opcional)
+
+# Configuración de MongoDB embebido para pruebas
+mongodb:
+  embedded:
+    version: 3.6.5  # Versión de MongoDB embebido para pruebas
+
+# Configuración para desactivar la seguridad y otros servicios que no se requieren en pruebas
+server:
+  port: 0  # Asignación automática de puerto para pruebas
+
+logging:
+  level:
+    org:
+      springframework: INFO  # Nivel de logging para Spring (puede cambiarse según necesidad)
