@@ -17,14 +17,14 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String Id;
+    private Long Id;
 
-    private String category;
+    //private String category;
     private String name;  // Cambiado a minúsculas para seguir las convenciones de Java
     private double quantity;
 
     // Constructor personalizado (si es necesario)
-    public Product(String id, String name, double quantity) {
+    public Product(Long id, String name, double quantity) {
         this.Id= id;
         this.name = name;
         this.quantity = quantity;

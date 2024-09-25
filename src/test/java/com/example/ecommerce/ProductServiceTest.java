@@ -31,7 +31,7 @@ public class ProductServiceTest {
 
     @Test
     public void testGetProductById_Found() {
-        Product product = new Product("1","Producto A", 100.0);
+        Product product = new Product(1L,"Producto A", 100.0);
         Mockito.when(productRepository.findById("1")).thenReturn(Optional.of(product));  // Si no se usa, no falla
 
 
