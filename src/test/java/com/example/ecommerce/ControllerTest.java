@@ -9,13 +9,15 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.ResultMatcher;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+
+
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 
 import java.util.Optional;
 
-import static org.springframework.test.web.client.match.MockRestRequestMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -39,8 +41,10 @@ public class ControllerTest {
         // Hacemos la petición GET y verificamos la respuesta
         mockMvc.perform(MockMvcRequestBuilders.get("/api/products/1"))
                 .andExpect(status().isOk())
-                .andExpect((ResultMatcher) jsonPath("$.name").value("Producto A"))
-                .andExpect((ResultMatcher) jsonPath("$.quantity").value(100.0));
+
+                .andExpect(jsonPath("$.name").value("Producto A"))
+                .andExpect(jsonPath("$.quantity").value(100.0));
+        ;
     }
 
     // Test cuando el producto no existe
